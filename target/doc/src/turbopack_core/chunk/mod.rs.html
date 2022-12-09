@@ -512,8 +512,6 @@
 <span id="512">512</span>
 <span id="513">513</span>
 <span id="514">514</span>
-<span id="515">515</span>
-<span id="516">516</span>
 </pre><pre class="rust"><code><span class="kw">pub mod </span>dev;
 <span class="kw">pub mod </span>optimize;
 
@@ -862,7 +860,7 @@
     <span class="kw">let </span><span class="kw-2">mut </span>chunks = Vec::new();
     <span class="kw">let </span><span class="kw-2">mut </span>async_chunk_groups = Vec::new();
     <span class="kw">let </span><span class="kw-2">mut </span>external_asset_references = Vec::new();
-    <span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::new();
+    <span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::with_capacity(<span class="number">32</span>);
 
     <span class="kw">let </span>chunk_item = I::from_asset(context, entry).<span class="kw">await</span><span class="question-mark">?</span>.unwrap();
     queue.push_back(ChunkContentWorkItem::AssetReferences(
@@ -974,8 +972,6 @@
                                 inner_chunk_items.push(manifest_loader_item);
                                 inner_chunk_groups
                                     .push(ChunkGroupVc::from_asset(manifest_chunk, context));
-                                inner_chunk_groups
-                                    .push(ChunkGroupVc::from_asset(chunkable_asset, context));
                             } <span class="kw">else </span>{
                                 external_asset_references.push(reference);
                                 <span class="kw">continue </span><span class="lifetime">&#39;outer</span>;

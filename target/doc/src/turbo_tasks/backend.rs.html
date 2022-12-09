@@ -383,24 +383,18 @@
 <span id="383">383</span>
 <span id="384">384</span>
 <span id="385">385</span>
-<span id="386">386</span>
-<span id="387">387</span>
-<span id="388">388</span>
-<span id="389">389</span>
-<span id="390">390</span>
-<span id="391">391</span>
 </pre><pre class="rust"><code><span class="kw">use </span>std::{
     any::Any,
     borrow::Cow,
-    collections::HashSet,
     fmt::{Debug, Display},
     future::Future,
     pin::Pin,
     sync::Arc,
-    time::Duration,
+    time::{Duration, Instant},
 };
 
 <span class="kw">use </span>anyhow::{anyhow, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span>auto_hash_map::AutoSet;
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">pub use </span><span class="kw">crate</span>::id::BackendJobId;
@@ -467,6 +461,14 @@
 }
 
 <span class="kw">impl </span>PersistentTaskType {
+    <span class="kw">pub fn </span>shrink_to_fit(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">match </span><span class="self">self </span>{
+            <span class="self">Self</span>::Native(<span class="kw">_</span>, inputs) =&gt; inputs.shrink_to_fit(),
+            <span class="self">Self</span>::ResolveNative(<span class="kw">_</span>, inputs) =&gt; inputs.shrink_to_fit(),
+            <span class="self">Self</span>::ResolveTrait(<span class="kw">_</span>, <span class="kw">_</span>, inputs) =&gt; inputs.shrink_to_fit(),
+        }
+    }
+
     <span class="kw">pub fn </span>len(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
         <span class="kw">match </span><span class="self">self </span>{
             PersistentTaskType::Native(<span class="kw">_</span>, v)
@@ -502,7 +504,7 @@
 
 <span class="comment">// TODO technically CellContent is already indexed by the ValueTypeId, so we
 // don&#39;t need to store it here
-</span><span class="attr">#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+</span><span class="attr">#[derive(Clone, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
 </span><span class="kw">pub struct </span>CellContent(<span class="kw">pub </span><span class="prelude-ty">Option</span>&lt;SharedReference&gt;);
 
 <span class="kw">impl </span>Display <span class="kw">for </span>CellContent {
@@ -583,6 +585,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         task: TaskId,
         duration: Duration,
+        instant: Instant,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) -&gt; bool;
 
@@ -608,13 +611,6 @@
         strongly_consistent: bool,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;RawVc, EventListener&gt;&gt;;
-
-    <span class="kw">fn </span>track_read_task_output(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        task: TaskId,
-        reader: TaskId,
-        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    );
 
     <span class="kw">fn </span>try_read_task_cell(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -647,21 +643,13 @@
         }
     }
 
-    <span class="kw">fn </span>track_read_task_cell(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        task: TaskId,
-        index: CellId,
-        reader: TaskId,
-        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    );
-
     <span class="kw">fn </span>try_read_task_collectibles(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         task: TaskId,
         trait_id: TraitTypeId,
         reader: TaskId,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;HashSet&lt;RawVc&gt;, EventListener&gt;&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;AutoSet&lt;RawVc&gt;, EventListener&gt;&gt;;
 
     <span class="kw">fn </span>emit_collectible(
         <span class="kw-2">&amp;</span><span class="self">self</span>,

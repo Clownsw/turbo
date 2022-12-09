@@ -1587,28 +1587,331 @@
 <span id="1587">1587</span>
 <span id="1588">1588</span>
 <span id="1589">1589</span>
-</pre><pre class="rust"><code><span class="kw">use </span>std::{
+<span id="1590">1590</span>
+<span id="1591">1591</span>
+<span id="1592">1592</span>
+<span id="1593">1593</span>
+<span id="1594">1594</span>
+<span id="1595">1595</span>
+<span id="1596">1596</span>
+<span id="1597">1597</span>
+<span id="1598">1598</span>
+<span id="1599">1599</span>
+<span id="1600">1600</span>
+<span id="1601">1601</span>
+<span id="1602">1602</span>
+<span id="1603">1603</span>
+<span id="1604">1604</span>
+<span id="1605">1605</span>
+<span id="1606">1606</span>
+<span id="1607">1607</span>
+<span id="1608">1608</span>
+<span id="1609">1609</span>
+<span id="1610">1610</span>
+<span id="1611">1611</span>
+<span id="1612">1612</span>
+<span id="1613">1613</span>
+<span id="1614">1614</span>
+<span id="1615">1615</span>
+<span id="1616">1616</span>
+<span id="1617">1617</span>
+<span id="1618">1618</span>
+<span id="1619">1619</span>
+<span id="1620">1620</span>
+<span id="1621">1621</span>
+<span id="1622">1622</span>
+<span id="1623">1623</span>
+<span id="1624">1624</span>
+<span id="1625">1625</span>
+<span id="1626">1626</span>
+<span id="1627">1627</span>
+<span id="1628">1628</span>
+<span id="1629">1629</span>
+<span id="1630">1630</span>
+<span id="1631">1631</span>
+<span id="1632">1632</span>
+<span id="1633">1633</span>
+<span id="1634">1634</span>
+<span id="1635">1635</span>
+<span id="1636">1636</span>
+<span id="1637">1637</span>
+<span id="1638">1638</span>
+<span id="1639">1639</span>
+<span id="1640">1640</span>
+<span id="1641">1641</span>
+<span id="1642">1642</span>
+<span id="1643">1643</span>
+<span id="1644">1644</span>
+<span id="1645">1645</span>
+<span id="1646">1646</span>
+<span id="1647">1647</span>
+<span id="1648">1648</span>
+<span id="1649">1649</span>
+<span id="1650">1650</span>
+<span id="1651">1651</span>
+<span id="1652">1652</span>
+<span id="1653">1653</span>
+<span id="1654">1654</span>
+<span id="1655">1655</span>
+<span id="1656">1656</span>
+<span id="1657">1657</span>
+<span id="1658">1658</span>
+<span id="1659">1659</span>
+<span id="1660">1660</span>
+<span id="1661">1661</span>
+<span id="1662">1662</span>
+<span id="1663">1663</span>
+<span id="1664">1664</span>
+<span id="1665">1665</span>
+<span id="1666">1666</span>
+<span id="1667">1667</span>
+<span id="1668">1668</span>
+<span id="1669">1669</span>
+<span id="1670">1670</span>
+<span id="1671">1671</span>
+<span id="1672">1672</span>
+<span id="1673">1673</span>
+<span id="1674">1674</span>
+<span id="1675">1675</span>
+<span id="1676">1676</span>
+<span id="1677">1677</span>
+<span id="1678">1678</span>
+<span id="1679">1679</span>
+<span id="1680">1680</span>
+<span id="1681">1681</span>
+<span id="1682">1682</span>
+<span id="1683">1683</span>
+<span id="1684">1684</span>
+<span id="1685">1685</span>
+<span id="1686">1686</span>
+<span id="1687">1687</span>
+<span id="1688">1688</span>
+<span id="1689">1689</span>
+<span id="1690">1690</span>
+<span id="1691">1691</span>
+<span id="1692">1692</span>
+<span id="1693">1693</span>
+<span id="1694">1694</span>
+<span id="1695">1695</span>
+<span id="1696">1696</span>
+<span id="1697">1697</span>
+<span id="1698">1698</span>
+<span id="1699">1699</span>
+<span id="1700">1700</span>
+<span id="1701">1701</span>
+<span id="1702">1702</span>
+<span id="1703">1703</span>
+<span id="1704">1704</span>
+<span id="1705">1705</span>
+<span id="1706">1706</span>
+<span id="1707">1707</span>
+<span id="1708">1708</span>
+<span id="1709">1709</span>
+<span id="1710">1710</span>
+<span id="1711">1711</span>
+<span id="1712">1712</span>
+<span id="1713">1713</span>
+<span id="1714">1714</span>
+<span id="1715">1715</span>
+<span id="1716">1716</span>
+<span id="1717">1717</span>
+<span id="1718">1718</span>
+<span id="1719">1719</span>
+<span id="1720">1720</span>
+<span id="1721">1721</span>
+<span id="1722">1722</span>
+<span id="1723">1723</span>
+<span id="1724">1724</span>
+<span id="1725">1725</span>
+<span id="1726">1726</span>
+<span id="1727">1727</span>
+<span id="1728">1728</span>
+<span id="1729">1729</span>
+<span id="1730">1730</span>
+<span id="1731">1731</span>
+<span id="1732">1732</span>
+<span id="1733">1733</span>
+<span id="1734">1734</span>
+<span id="1735">1735</span>
+<span id="1736">1736</span>
+<span id="1737">1737</span>
+<span id="1738">1738</span>
+<span id="1739">1739</span>
+<span id="1740">1740</span>
+<span id="1741">1741</span>
+<span id="1742">1742</span>
+<span id="1743">1743</span>
+<span id="1744">1744</span>
+<span id="1745">1745</span>
+<span id="1746">1746</span>
+<span id="1747">1747</span>
+<span id="1748">1748</span>
+<span id="1749">1749</span>
+<span id="1750">1750</span>
+<span id="1751">1751</span>
+<span id="1752">1752</span>
+<span id="1753">1753</span>
+<span id="1754">1754</span>
+<span id="1755">1755</span>
+<span id="1756">1756</span>
+<span id="1757">1757</span>
+<span id="1758">1758</span>
+<span id="1759">1759</span>
+<span id="1760">1760</span>
+<span id="1761">1761</span>
+<span id="1762">1762</span>
+<span id="1763">1763</span>
+<span id="1764">1764</span>
+<span id="1765">1765</span>
+<span id="1766">1766</span>
+<span id="1767">1767</span>
+<span id="1768">1768</span>
+<span id="1769">1769</span>
+<span id="1770">1770</span>
+<span id="1771">1771</span>
+<span id="1772">1772</span>
+<span id="1773">1773</span>
+<span id="1774">1774</span>
+<span id="1775">1775</span>
+<span id="1776">1776</span>
+<span id="1777">1777</span>
+<span id="1778">1778</span>
+<span id="1779">1779</span>
+<span id="1780">1780</span>
+<span id="1781">1781</span>
+<span id="1782">1782</span>
+<span id="1783">1783</span>
+<span id="1784">1784</span>
+<span id="1785">1785</span>
+<span id="1786">1786</span>
+<span id="1787">1787</span>
+<span id="1788">1788</span>
+<span id="1789">1789</span>
+<span id="1790">1790</span>
+<span id="1791">1791</span>
+<span id="1792">1792</span>
+<span id="1793">1793</span>
+<span id="1794">1794</span>
+<span id="1795">1795</span>
+<span id="1796">1796</span>
+<span id="1797">1797</span>
+<span id="1798">1798</span>
+<span id="1799">1799</span>
+<span id="1800">1800</span>
+<span id="1801">1801</span>
+<span id="1802">1802</span>
+<span id="1803">1803</span>
+<span id="1804">1804</span>
+<span id="1805">1805</span>
+<span id="1806">1806</span>
+<span id="1807">1807</span>
+<span id="1808">1808</span>
+<span id="1809">1809</span>
+<span id="1810">1810</span>
+<span id="1811">1811</span>
+<span id="1812">1812</span>
+<span id="1813">1813</span>
+<span id="1814">1814</span>
+<span id="1815">1815</span>
+<span id="1816">1816</span>
+<span id="1817">1817</span>
+<span id="1818">1818</span>
+<span id="1819">1819</span>
+<span id="1820">1820</span>
+<span id="1821">1821</span>
+<span id="1822">1822</span>
+<span id="1823">1823</span>
+<span id="1824">1824</span>
+<span id="1825">1825</span>
+<span id="1826">1826</span>
+<span id="1827">1827</span>
+<span id="1828">1828</span>
+<span id="1829">1829</span>
+<span id="1830">1830</span>
+<span id="1831">1831</span>
+<span id="1832">1832</span>
+<span id="1833">1833</span>
+<span id="1834">1834</span>
+<span id="1835">1835</span>
+<span id="1836">1836</span>
+<span id="1837">1837</span>
+<span id="1838">1838</span>
+<span id="1839">1839</span>
+<span id="1840">1840</span>
+<span id="1841">1841</span>
+<span id="1842">1842</span>
+<span id="1843">1843</span>
+<span id="1844">1844</span>
+<span id="1845">1845</span>
+<span id="1846">1846</span>
+<span id="1847">1847</span>
+<span id="1848">1848</span>
+<span id="1849">1849</span>
+<span id="1850">1850</span>
+<span id="1851">1851</span>
+<span id="1852">1852</span>
+<span id="1853">1853</span>
+<span id="1854">1854</span>
+<span id="1855">1855</span>
+<span id="1856">1856</span>
+<span id="1857">1857</span>
+<span id="1858">1858</span>
+<span id="1859">1859</span>
+<span id="1860">1860</span>
+<span id="1861">1861</span>
+<span id="1862">1862</span>
+<span id="1863">1863</span>
+<span id="1864">1864</span>
+<span id="1865">1865</span>
+<span id="1866">1866</span>
+<span id="1867">1867</span>
+<span id="1868">1868</span>
+<span id="1869">1869</span>
+<span id="1870">1870</span>
+<span id="1871">1871</span>
+<span id="1872">1872</span>
+<span id="1873">1873</span>
+<span id="1874">1874</span>
+<span id="1875">1875</span>
+</pre><pre class="rust"><code><span class="kw">mod </span>meta_state;
+<span class="kw">mod </span>stats;
+
+<span class="kw">use </span>std::{
     borrow::Cow,
     cell::RefCell,
-    cmp::Ordering,
-    collections::{HashMap, HashSet, VecDeque},
+    cmp::{max, Ordering},
+    collections::VecDeque,
     fmt::{<span class="self">self</span>, Debug, Display, Formatter, Write},
     future::Future,
     hash::Hash,
     mem::{replace, take},
     pin::Pin,
-    time::Duration,
+    sync::Arc,
+    time::{Duration, Instant},
 };
 
 <span class="kw">use </span>anyhow::Result;
-<span class="kw">use </span>parking_lot::{Mutex, RwLock, RwLockWriteGuard};
+<span class="kw">use </span>auto_hash_map::{AutoMap, AutoSet};
+<span class="kw">use </span>parking_lot::{Mutex, RwLock};
+<span class="kw">use </span>stats::TaskStats;
 <span class="kw">use </span>tokio::task_local;
 <span class="kw">use </span>turbo_tasks::{
-    backend::PersistentTaskType,
+    backend::{PersistentTaskType, TaskExecutionSpec},
     event::{Event, EventListener},
-    get_invalidator, registry, CellId, FunctionId, Invalidator, RawVc, TaskId, TaskInput,
-    TraitTypeId, TurboTasksBackendApi, ValueTypeId,
+    get_invalidator, registry, CellId, Invalidator, RawVc, StatsType, TaskId, TraitTypeId,
+    TurboTasksBackendApi, ValueTypeId,
 };
+
+<span class="kw">use crate</span>::{
+    cell::Cell,
+    count_hash_set::CountHashSet,
+    memory_backend::Job,
+    output::Output,
+    scope::{ScopeChildChangeEffect, TaskScopeId, TaskScopes},
+    stats::{ReferenceType, StatsReferences, StatsTaskType},
+    MemoryBackend,
+};
+
 <span class="kw">pub type </span>NativeTaskFuture = Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;RawVc&gt;&gt; + Send&gt;&gt;;
 <span class="kw">pub type </span>NativeTaskFn = Box&lt;<span class="kw">dyn </span>Fn() -&gt; NativeTaskFuture + Send + Sync&gt;;
 
@@ -1630,7 +1933,7 @@
 <span class="macro">task_local! </span>{
     <span class="doccomment">/// Vc/Scopes that are read during task execution
     /// These will be stored as dependencies when the execution has finished
-    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">static </span>DEPENDENCIES_TO_TRACK: RefCell&lt;HashSet&lt;TaskDependency&gt;&gt;;
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">static </span>DEPENDENCIES_TO_TRACK: RefCell&lt;AutoSet&lt;TaskDependency&gt;&gt;;
 }
 
 <span class="kw">type </span>OnceTaskFn = Mutex&lt;<span class="prelude-ty">Option</span>&lt;Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;RawVc&gt;&gt; + Send + <span class="lifetime">&#39;static</span>&gt;&gt;&gt;&gt;;
@@ -1650,18 +1953,8 @@
     /// applied.
     </span>Once(OnceTaskFn),
 
-    <span class="doccomment">/// A normal task execution a native (rust) function
-    </span>Native(FunctionId, NativeTaskFn),
-
-    <span class="doccomment">/// A resolve task, which resolves arguments and calls the function with
-    /// resolve arguments. The inner function call will do a cache lookup.
-    </span>ResolveNative(FunctionId),
-
-    <span class="doccomment">/// A trait method resolve task. It resolves the first (`self`) argument and
-    /// looks up the trait method on that value. Then it calls that method.
-    /// The method call will do a cache lookup and might resolve arguments
-    /// before.
-    </span>ResolveTrait(TraitTypeId, Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;),
+    <span class="doccomment">/// A normal persistent task
+    </span>Persistent(Arc&lt;PersistentTaskType&gt;),
 }
 
 <span class="kw">impl </span>Debug <span class="kw">for </span>TaskType {
@@ -1669,21 +1962,16 @@
         <span class="kw">match </span><span class="self">self </span>{
             <span class="self">Self</span>::Root(..) =&gt; f.debug_tuple(<span class="string">&quot;Root&quot;</span>).finish(),
             <span class="self">Self</span>::Once(..) =&gt; f.debug_tuple(<span class="string">&quot;Once&quot;</span>).finish(),
-            <span class="self">Self</span>::Native(native_fn, <span class="kw">_</span>) =&gt; f
-                .debug_tuple(<span class="string">&quot;Native&quot;</span>)
-                .field(<span class="kw-2">&amp;</span>registry::get_function(<span class="kw-2">*</span>native_fn).name)
-                .finish(),
-            <span class="self">Self</span>::ResolveNative(native_fn) =&gt; f
-                .debug_tuple(<span class="string">&quot;ResolveNative&quot;</span>)
-                .field(<span class="kw-2">&amp;</span>registry::get_function(<span class="kw-2">*</span>native_fn).name)
-                .finish(),
-            <span class="self">Self</span>::ResolveTrait(trait_type, name) =&gt; f
-                .debug_tuple(<span class="string">&quot;ResolveTrait&quot;</span>)
-                .field(<span class="kw-2">&amp;</span>registry::get_trait(<span class="kw-2">*</span>trait_type).name)
-                .field(name)
-                .finish(),
+            <span class="self">Self</span>::Persistent(ty) =&gt; ty.fmt(f),
         }
     }
+}
+
+<span class="attr">#[derive(Default)]
+</span><span class="kw">enum </span>PrepareTaskType {
+    <span class="attr">#[default]
+    </span><span class="prelude-val">None</span>,
+    Native(NativeTaskFn),
 }
 
 <span class="doccomment">/// A Task is an instantiation of an Function with some arguments.
@@ -1691,47 +1979,35 @@
 /// Task instance.
 </span><span class="kw">pub struct </span>Task {
     id: TaskId,
-    <span class="comment">// TODO move that into TaskType where needed
-    // TODO we currently only use that for visualization
-    // TODO this can be removed
-    </span><span class="doccomment">/// The arguments of the Task
-    </span>inputs: Vec&lt;TaskInput&gt;,
     <span class="doccomment">/// The type of the task
     </span>ty: TaskType,
     <span class="doccomment">/// The mutable state of the task
-    </span>state: RwLock&lt;TaskState&gt;,
-    <span class="comment">// TODO technically we need no lock here as it&#39;s only written
-    // during execution, which doesn&#39;t happen in parallel
-    </span><span class="doccomment">/// Mutable state that is used during task execution.
-    /// It will only be accessed from the task execution, which happens
-    /// non-concurrently.
-    </span>execution_data: Mutex&lt;TaskExecutionData&gt;,
-}
-
-<span class="doccomment">/// Task data that is only modified during task execution.
-</span><span class="attr">#[derive(Default)]
-</span><span class="kw">struct </span>TaskExecutionData {
-    <span class="doccomment">/// Cells/Scopes that the task has read during execution.
-    /// The Task will keep these tasks alive as invalidations that happen there
-    /// might affect this task.
-    ///
-    /// This back-edge is [Cell] `dependent_tasks`, which is a weak edge.
-    </span>dependencies: HashSet&lt;TaskDependency&gt;,
+    /// Unset state is equal to a Dirty task that has not been executed yet
+    </span>state: RwLock&lt;TaskMetaState&gt;,
 }
 
 <span class="kw">impl </span>Debug <span class="kw">for </span>Task {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
         <span class="kw">let </span><span class="kw-2">mut </span>result = f.debug_struct(<span class="string">&quot;Task&quot;</span>);
         result.field(<span class="string">&quot;type&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.ty);
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(state) = <span class="self">self</span>.state.try_read() {
-            result.field(<span class="string">&quot;scopes&quot;</span>, <span class="kw-2">&amp;</span>state.scopes);
-            result.field(<span class="string">&quot;state&quot;</span>, <span class="kw-2">&amp;</span>state.state_type);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(state) = <span class="self">self</span>.try_state() {
+            <span class="kw">match </span>state {
+                TaskMetaStateReadGuard::Full(state) =&gt; {
+                    result.field(<span class="string">&quot;state&quot;</span>, <span class="kw-2">&amp;</span>Task::state_string(<span class="kw-2">&amp;</span>state));
+                }
+                TaskMetaStateReadGuard::Partial(<span class="kw">_</span>) =&gt; {
+                    result.field(<span class="string">&quot;state&quot;</span>, <span class="kw-2">&amp;</span><span class="string">&quot;partial&quot;</span>);
+                }
+                TaskMetaStateReadGuard::Unloaded(<span class="kw">_</span>) =&gt; {
+                    result.field(<span class="string">&quot;state&quot;</span>, <span class="kw-2">&amp;</span><span class="string">&quot;unloaded&quot;</span>);
+                }
+            }
         }
         result.finish()
     }
 }
 
-<span class="doccomment">/// The state of a [Task]
+<span class="doccomment">/// The full state of a [Task], it includes all information.
 </span><span class="kw">struct </span>TaskState {
     scopes: TaskScopes,
 
@@ -1741,54 +2017,119 @@
     </span>state_type: TaskStateType,
 
     <span class="doccomment">/// Children are only modified from execution
-    </span>children: HashSet&lt;TaskId&gt;,
+    </span>children: AutoSet&lt;TaskId&gt;,
 
     <span class="doccomment">/// Collectibles are only modified from execution
     </span>collectibles: MaybeCollectibles,
 
+    <span class="doccomment">/// Preparations done for the task type with the bound arguments, e. g.
+    /// argument validation
+    </span>prepared_type: PrepareTaskType,
+
     output: Output,
-    <span class="comment">// TODO use AutoMap here
-    </span>cells: HashMap&lt;ValueTypeId, Vec&lt;Cell&gt;&gt;,
-    event: Event,
+    cells: AutoMap&lt;ValueTypeId, Vec&lt;Cell&gt;&gt;,
 
     <span class="comment">// Stats:
-    </span>executions: u32,
-    total_duration: Duration,
-    last_duration: Duration,
+    </span>stats: TaskStats,
 }
 
 <span class="kw">impl </span>TaskState {
-    <span class="kw">fn </span>new(id: TaskId) -&gt; <span class="self">Self </span>{
+    <span class="kw">fn </span>new(id: TaskId, stats_type: StatsType) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             scopes: Default::default(),
-            state_type: Default::default(),
+            state_type: Dirty {
+                event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+            },
             children: Default::default(),
             collectibles: Default::default(),
             output: Default::default(),
+            prepared_type: PrepareTaskType::None,
             cells: Default::default(),
-            event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
-            executions: Default::default(),
-            total_duration: Default::default(),
-            last_duration: Default::default(),
+            stats: TaskStats::new(stats_type),
             <span class="attr">#[cfg(feature = <span class="string">&quot;track_wait_dependencies&quot;</span>)]
             </span>last_waiting_task: Default::default(),
         }
     }
 
-    <span class="kw">fn </span>new_scheduled_in_scope(id: TaskId, scope: TaskScopeId) -&gt; <span class="self">Self </span>{
+    <span class="kw">fn </span>new_scheduled_in_scope(id: TaskId, scope: TaskScopeId, stats_type: StatsType) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             scopes: TaskScopes::Inner(CountHashSet::from([scope]), <span class="number">0</span>),
-            state_type: Scheduled,
+            state_type: Scheduled {
+                event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+            },
             children: Default::default(),
             collectibles: Default::default(),
             output: Default::default(),
+            prepared_type: PrepareTaskType::None,
             cells: Default::default(),
-            event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
-            executions: Default::default(),
-            total_duration: Default::default(),
-            last_duration: Default::default(),
+            stats: TaskStats::new(stats_type),
             <span class="attr">#[cfg(feature = <span class="string">&quot;track_wait_dependencies&quot;</span>)]
             </span>last_waiting_task: Default::default(),
+        }
+    }
+}
+
+<span class="doccomment">/// The partial task state. It&#39;s equal to a full TaskState with state = Dirty
+/// and all other fields empty. It looks like a dirty task that has not been
+/// executed yet. The task might still be in some task scopes.
+/// A Task can get into this state when it is unloaded by garbage collection,
+/// but is still attached to scopes.
+</span><span class="kw">struct </span>PartialTaskState {
+    stats_type: StatsType,
+    scopes: TaskScopes,
+}
+
+<span class="kw">impl </span>PartialTaskState {
+    <span class="kw">fn </span>into_full(<span class="self">self</span>, id: TaskId) -&gt; TaskState {
+        TaskState {
+            scopes: <span class="self">self</span>.scopes,
+            state_type: Dirty {
+                event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+            },
+            children: Default::default(),
+            collectibles: Default::default(),
+            prepared_type: PrepareTaskType::None,
+            output: Default::default(),
+            cells: Default::default(),
+            stats: TaskStats::new(<span class="self">self</span>.stats_type),
+        }
+    }
+}
+
+<span class="doccomment">/// A fully unloaded task state. It&#39;s equal to a partial task state without
+/// being attached to any scopes. This state is stored inlined instead of in a
+/// [Box] to reduce the memory consumption. Make sure to not add more fields
+/// than the size of a [Box].
+</span><span class="kw">struct </span>UnloadedTaskState {
+    stats_type: StatsType,
+}
+
+<span class="attr">#[cfg(test)]
+#[test]
+</span><span class="kw">fn </span>test_unloaded_task_state_size() {
+    <span class="macro">assert!</span>(std::mem::size_of::&lt;UnloadedTaskState&gt;() &lt;= std::mem::size_of::&lt;Box&lt;()&gt;&gt;());
+}
+
+<span class="kw">impl </span>UnloadedTaskState {
+    <span class="kw">fn </span>into_full(<span class="self">self</span>, id: TaskId) -&gt; TaskState {
+        TaskState {
+            scopes: Default::default(),
+            state_type: Dirty {
+                event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+            },
+            children: Default::default(),
+            collectibles: Default::default(),
+            prepared_type: PrepareTaskType::None,
+            output: Default::default(),
+            cells: Default::default(),
+            stats: TaskStats::new(<span class="self">self</span>.stats_type),
+        }
+    }
+
+    <span class="kw">fn </span>into_partial(<span class="self">self</span>) -&gt; PartialTaskState {
+        PartialTaskState {
+            scopes: TaskScopes::Inner(CountHashSet::new(), <span class="number">0</span>),
+            stats_type: <span class="self">self</span>.stats_type,
         }
     }
 }
@@ -1803,8 +2144,8 @@
 <span class="doccomment">/// The collectibles of a task.
 </span><span class="attr">#[derive(Default)]
 </span><span class="kw">struct </span>Collectibles {
-    emitted: HashSet&lt;(TraitTypeId, RawVc)&gt;,
-    unemitted: HashSet&lt;(TraitTypeId, RawVc)&gt;,
+    emitted: AutoSet&lt;(TraitTypeId, RawVc)&gt;,
+    unemitted: AutoSet&lt;(TraitTypeId, RawVc)&gt;,
 }
 
 <span class="kw">impl </span>MaybeCollectibles {
@@ -1839,93 +2180,59 @@
     }
 }
 
-<span class="attr">#[derive(PartialEq, Eq, Debug)]
-</span><span class="kw">enum </span>TaskStateType {
+<span class="kw">enum </span>TaskStateType {
     <span class="doccomment">/// Ready
     ///
     /// on invalidation this will move to Dirty or Scheduled depending on active
     /// flag
-    </span>Done,
+    </span>Done {
+        <span class="doccomment">/// Cells/Scopes that the task has read during execution.
+        /// The Task will keep these tasks alive as invalidations that happen
+        /// there might affect this task.
+        ///
+        /// This back-edge is [Cell] `dependent_tasks`, which is a weak edge.
+        </span>dependencies: AutoSet&lt;TaskDependency&gt;,
+    },
 
     <span class="doccomment">/// Execution is invalid, but not yet scheduled
     ///
     /// on activation this will move to Scheduled
-    </span>Dirty,
+    </span>Dirty { event: Event },
 
     <span class="doccomment">/// Execution is invalid and scheduled
     ///
     /// on start this will move to InProgress or Dirty depending on active flag
-    </span>Scheduled,
+    </span>Scheduled { event: Event },
 
     <span class="doccomment">/// Execution is happening
     ///
     /// on finish this will move to Done
     ///
     /// on invalidation this will move to InProgressDirty
-    </span>InProgress,
+    </span>InProgress { event: Event },
 
     <span class="doccomment">/// Invalid execution is happening
     ///
     /// on finish this will move to Dirty or Scheduled depending on active flag
-    </span>InProgressDirty,
-}
-
-<span class="kw">impl </span>Default <span class="kw">for </span>TaskStateType {
-    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-        Dirty
-    }
+    </span>InProgressDirty { event: Event },
 }
 
 <span class="kw">use </span>TaskStateType::<span class="kw-2">*</span>;
 
-<span class="kw">use crate</span>::{
-    cell::Cell,
-    count_hash_set::CountHashSet,
-    memory_backend::Job,
-    output::Output,
-    scope::{ScopeChildChangeEffect, TaskScopeId, TaskScopes},
-    stats::{<span class="self">self</span>, StatsReferences},
-    MemoryBackend,
+<span class="kw">use </span><span class="self">self</span>::meta_state::{
+    FullTaskWriteGuard, TaskMetaState, TaskMetaStateReadGuard, TaskMetaStateWriteGuard,
 };
 
 <span class="kw">impl </span>Task {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new_native(id: TaskId, inputs: Vec&lt;TaskInput&gt;, native_fn: FunctionId) -&gt; <span class="self">Self </span>{
-        <span class="kw">let </span>bound_fn = registry::get_function(native_fn).bind(<span class="kw-2">&amp;</span>inputs);
-        <span class="self">Self </span>{
-            id,
-            inputs,
-            ty: TaskType::Native(native_fn, bound_fn),
-            state: RwLock::new(TaskState::new(id)),
-            execution_data: Default::default(),
-        }
-    }
-
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new_resolve_native(
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new_persistent(
         id: TaskId,
-        inputs: Vec&lt;TaskInput&gt;,
-        native_fn: FunctionId,
+        task_type: Arc&lt;PersistentTaskType&gt;,
+        stats_type: StatsType,
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            inputs,
-            ty: TaskType::ResolveNative(native_fn),
-            state: RwLock::new(TaskState::new(id)),
-            execution_data: Default::default(),
-        }
-    }
-
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new_resolve_trait(
-        id: TaskId,
-        trait_type: TraitTypeId,
-        trait_fn_name: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;,
-        inputs: Vec&lt;TaskInput&gt;,
-    ) -&gt; <span class="self">Self </span>{
-        <span class="self">Self </span>{
-            id,
-            inputs,
-            ty: TaskType::ResolveTrait(trait_type, trait_fn_name),
-            state: RwLock::new(TaskState::new(id)),
-            execution_data: Default::default(),
+            ty: TaskType::Persistent(task_type),
+            state: RwLock::new(TaskMetaState::Full(<span class="kw">box </span>TaskState::new(id, stats_type))),
         }
     }
 
@@ -1933,13 +2240,14 @@
         id: TaskId,
         scope: TaskScopeId,
         functor: <span class="kw">impl </span>Fn() -&gt; NativeTaskFuture + Sync + Send + <span class="lifetime">&#39;static</span>,
+        stats_type: StatsType,
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            inputs: Vec::new(),
             ty: TaskType::Root(Box::new(functor)),
-            state: RwLock::new(TaskState::new_scheduled_in_scope(id, scope)),
-            execution_data: Default::default(),
+            state: RwLock::new(TaskMetaState::Full(<span class="kw">box </span>TaskState::new_scheduled_in_scope(
+                id, scope, stats_type,
+            ))),
         }
     }
 
@@ -1947,13 +2255,14 @@
         id: TaskId,
         scope: TaskScopeId,
         functor: <span class="kw">impl </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;RawVc&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+        stats_type: StatsType,
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            inputs: Vec::new(),
             ty: TaskType::Once(Mutex::new(<span class="prelude-val">Some</span>(Box::pin(functor)))),
-            state: RwLock::new(TaskState::new_scheduled_in_scope(id, scope)),
-            execution_data: Default::default(),
+            state: RwLock::new(TaskMetaState::Full(<span class="kw">box </span>TaskState::new_scheduled_in_scope(
+                id, scope, stats_type,
+            ))),
         }
     }
 
@@ -1961,24 +2270,26 @@
         <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.ty {
             TaskType::Root(..) =&gt; <span class="macro">format!</span>(<span class="string">&quot;[{}] root&quot;</span>, <span class="self">self</span>.id),
             TaskType::Once(..) =&gt; <span class="macro">format!</span>(<span class="string">&quot;[{}] once&quot;</span>, <span class="self">self</span>.id),
-            TaskType::Native(native_fn, <span class="kw">_</span>) =&gt; {
-                <span class="macro">format!</span>(<span class="string">&quot;[{}] {}&quot;</span>, <span class="self">self</span>.id, registry::get_function(<span class="kw-2">*</span>native_fn).name)
-            }
-            TaskType::ResolveNative(native_fn) =&gt; {
-                <span class="macro">format!</span>(
-                    <span class="string">&quot;[{}] [resolve] {}&quot;</span>,
-                    <span class="self">self</span>.id,
-                    registry::get_function(<span class="kw-2">*</span>native_fn).name
-                )
-            }
-            TaskType::ResolveTrait(trait_type, fn_name) =&gt; {
-                <span class="macro">format!</span>(
-                    <span class="string">&quot;[{}] [resolve trait] {} in trait {}&quot;</span>,
-                    <span class="self">self</span>.id,
-                    fn_name,
-                    registry::get_trait(<span class="kw-2">*</span>trait_type).name
-                )
-            }
+            TaskType::Persistent(ty) =&gt; <span class="kw">match </span><span class="kw-2">&amp;**</span>ty {
+                PersistentTaskType::Native(native_fn, <span class="kw">_</span>) =&gt; {
+                    <span class="macro">format!</span>(<span class="string">&quot;[{}] {}&quot;</span>, <span class="self">self</span>.id, registry::get_function(<span class="kw-2">*</span>native_fn).name)
+                }
+                PersistentTaskType::ResolveNative(native_fn, <span class="kw">_</span>) =&gt; {
+                    <span class="macro">format!</span>(
+                        <span class="string">&quot;[{}] [resolve] {}&quot;</span>,
+                        <span class="self">self</span>.id,
+                        registry::get_function(<span class="kw-2">*</span>native_fn).name
+                    )
+                }
+                PersistentTaskType::ResolveTrait(trait_type, fn_name, <span class="kw">_</span>) =&gt; {
+                    <span class="macro">format!</span>(
+                        <span class="string">&quot;[{}] [resolve trait] {} in trait {}&quot;</span>,
+                        <span class="self">self</span>.id,
+                        fn_name,
+                        registry::get_trait(<span class="kw-2">*</span>trait_type).name
+                    )
+                }
+            },
         }
     }
 
@@ -1986,15 +2297,15 @@
         <span class="kw">match </span>dep {
             TaskDependency::TaskOutput(task) =&gt; {
                 backend.with_task(task, |task| {
-                    task.with_output_mut(|output| {
+                    task.with_output_mut_if_available(|output| {
                         output.dependent_tasks.remove(<span class="kw-2">&amp;</span>reader);
                     });
                 });
             }
             TaskDependency::TaskCell(task, index) =&gt; {
                 backend.with_task(task, |task| {
-                    task.with_cell_mut(index, |cell| {
-                        cell.dependent_tasks.remove(<span class="kw-2">&amp;</span>reader);
+                    task.with_cell_mut_if_available(index, |cell| {
+                        cell.remove_dependent_task(reader);
                     });
                 });
             }
@@ -2010,25 +2321,18 @@
     }
 
     <span class="attr">#[cfg(not(feature = <span class="string">&quot;report_expensive&quot;</span>))]
-    </span><span class="kw">fn </span>clear_dependencies(<span class="kw-2">&amp;</span><span class="self">self</span>, backend: <span class="kw-2">&amp;</span>MemoryBackend) {
-        <span class="kw">let </span><span class="kw-2">mut </span>execution_data = <span class="self">self</span>.execution_data.lock();
-        <span class="kw">let </span>dependencies = take(<span class="kw-2">&amp;mut </span>execution_data.dependencies);
-        drop(execution_data);
-
+    </span><span class="kw">fn </span>clear_dependencies(<span class="kw-2">&amp;</span><span class="self">self</span>, dependencies: AutoSet&lt;TaskDependency&gt;, backend: <span class="kw-2">&amp;</span>MemoryBackend) {
         <span class="kw">for </span>dep <span class="kw">in </span>dependencies.into_iter() {
             Task::remove_dependency(dep, <span class="self">self</span>.id, backend);
         }
     }
 
     <span class="attr">#[cfg(feature = <span class="string">&quot;report_expensive&quot;</span>)]
-    </span><span class="kw">fn </span>clear_dependencies(<span class="kw-2">&amp;</span><span class="self">self</span>, backend: <span class="kw-2">&amp;</span>MemoryBackend) {
+    </span><span class="kw">fn </span>clear_dependencies(<span class="kw-2">&amp;</span><span class="self">self</span>, dependencies: AutoSet&lt;TaskDependency&gt;, backend: <span class="kw-2">&amp;</span>MemoryBackend) {
         <span class="kw">use </span>std::time::Instant;
 
         <span class="kw">use </span>turbo_tasks::util::FormatDuration;
         <span class="kw">let </span>start = Instant::now();
-        <span class="kw">let </span><span class="kw-2">mut </span>execution_data = <span class="self">self</span>.execution_data.lock();
-        <span class="kw">let </span>dependencies = take(<span class="kw-2">&amp;mut </span>execution_data.dependencies);
-        drop(execution_data);
 
         <span class="kw">let </span>count = dependencies.len();
 
@@ -2046,21 +2350,58 @@
         }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>execution_started(
+    <span class="kw">fn </span>state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TaskMetaStateReadGuard&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="self">self</span>.state.read().into()
+    }
+
+    <span class="kw">fn </span>try_state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TaskMetaStateReadGuard&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="self">self</span>.state.try_read().map(|guard| guard.into())
+    }
+
+    <span class="kw">fn </span>state_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TaskMetaStateWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="self">self</span>.state.write().into()
+    }
+
+    <span class="kw">fn </span>full_state_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; FullTaskWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt; {
+        TaskMetaStateWriteGuard::full_from(<span class="self">self</span>.state.write(), <span class="self">self</span>)
+    }
+
+    <span class="attr">#[allow(dead_code, reason = <span class="string">&quot;We need this in future&quot;</span>)]
+    </span><span class="kw">fn </span>partial_state_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TaskMetaStateWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt; {
+        TaskMetaStateWriteGuard::partial_from(<span class="self">self</span>.state.write())
+    }
+
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>execute(
         <span class="self">self</span>: <span class="kw-2">&amp;</span>Task,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TaskExecutionSpec&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
+        <span class="kw">if </span>!<span class="self">self</span>.try_start_execution(<span class="kw-2">&amp;mut </span>state, turbo_tasks, backend) {
+            <span class="kw">return </span><span class="prelude-val">None</span>;
+        }
+        <span class="kw">let </span>future = <span class="self">self</span>.make_execution_future(<span class="kw-2">&amp;mut </span>state, turbo_tasks);
+        <span class="prelude-val">Some</span>(TaskExecutionSpec { future })
+    }
+
+    <span class="doccomment">/// Tries to change the state to InProgress and returns true if it was
+    /// possible.
+    </span><span class="kw">fn </span>try_start_execution(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        state: <span class="kw-2">&amp;mut </span>TaskState,
+        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+        backend: <span class="kw-2">&amp;</span>MemoryBackend,
     ) -&gt; bool {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        <span class="kw">let </span>state_type = <span class="kw-2">&amp;</span>state.state_type;
-        <span class="kw">match </span>state_type {
-            Done | InProgress | InProgressDirty =&gt; {
+        <span class="kw">match </span>state.state_type {
+            Done { .. } | InProgress { .. } | InProgressDirty { .. } =&gt; {
                 <span class="comment">// should not start in this state
                 </span><span class="kw">return </span><span class="bool-val">false</span>;
             }
-            Scheduled =&gt; {
-                state.state_type = InProgress;
-                state.executions += <span class="number">1</span>;
+            Scheduled { <span class="kw-2">ref mut </span>event } =&gt; {
+                state.state_type = InProgress {
+                    event: event.take(),
+                };
+                state.stats.increment_executions();
                 <span class="comment">// TODO we need to reconsider the approach of doing scope changes in background
                 // since they affect collectibles and need to be computed eagerly to allow
                 // strongly_consistent to work properly.
@@ -2068,53 +2409,20 @@
                 // finished.
                 </span><span class="kw">if </span>!state.children.is_empty() {
                     <span class="kw">let </span>set = take(<span class="kw-2">&amp;mut </span>state.children);
-                    <span class="kw">let </span>state_scopes = <span class="kw-2">&amp;</span>state.scopes;
-                    <span class="kw">match </span>state_scopes {
-                        TaskScopes::Root(scope) =&gt; {
-                            turbo_tasks.schedule_backend_foreground_job(
-                                backend.create_backend_job(Job::RemoveFromScope(set, <span class="kw-2">*</span>scope)),
-                            );
-                        }
-                        TaskScopes::Inner(<span class="kw-2">ref </span>scopes, <span class="kw">_</span>) =&gt; {
-                            turbo_tasks.schedule_backend_foreground_job(
-                                backend.create_backend_job(Job::RemoveFromScopes(
-                                    set,
-                                    scopes.iter().copied().collect(),
-                                )),
-                            );
-                        }
-                    }
+                    remove_from_scopes(set, <span class="kw-2">&amp;</span>state.scopes, backend, turbo_tasks);
                 }
                 <span class="kw">if let </span><span class="prelude-val">Some</span>(collectibles) = state.collectibles.take() {
-                    <span class="kw">let </span>emitted = collectibles.emitted;
-                    <span class="kw">let </span>unemitted = collectibles.unemitted;
-                    state.scopes.iter().for_each(|id| {
-                        backend.with_scope(id, |scope| {
-                            <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
-                            {
-                                <span class="kw">let </span><span class="kw-2">mut </span>state = scope.state.lock();
-                                emitted
-                                    .iter()
-                                    .filter_map(|(trait_id, collectible)| {
-                                        state.remove_collectible(<span class="kw-2">*</span>trait_id, <span class="kw-2">*</span>collectible)
-                                    })
-                                    .for_each(|e| tasks.extend(e.notify));
-
-                                unemitted
-                                    .iter()
-                                    .filter_map(|(trait_id, collectible)| {
-                                        state.add_collectible(<span class="kw-2">*</span>trait_id, <span class="kw-2">*</span>collectible)
-                                    })
-                                    .for_each(|e| tasks.extend(e.notify));
-                            };
-                            turbo_tasks.schedule_notify_tasks_set(<span class="kw-2">&amp;</span>tasks);
-                        })
-                    })
+                    remove_collectible_from_scopes(
+                        collectibles.emitted,
+                        collectibles.unemitted,
+                        <span class="kw-2">&amp;</span>state.scopes,
+                        backend,
+                        turbo_tasks,
+                    );
                 }
             }
-            Dirty =&gt; {
-                <span class="kw">let </span>state_type = Task::state_string(<span class="kw-2">&amp;</span>state);
-                drop(state);
+            Dirty { .. } =&gt; {
+                <span class="kw">let </span>state_type = Task::state_string(<span class="kw-2">&amp;*</span>state);
                 <span class="macro">panic!</span>(
                     <span class="string">&quot;{:?} execution started in unexpected state {}&quot;</span>,
                     <span class="self">self</span>, state_type
@@ -2124,27 +2432,73 @@
         <span class="bool-val">true
     </span>}
 
+    <span class="doccomment">/// Prepares task execution and returns a future that will execute the task.
+    </span><span class="kw">fn </span>make_execution_future(
+        <span class="self">self</span>: <span class="kw-2">&amp;</span>Task,
+        <span class="kw-2">mut </span>state: <span class="kw-2">&amp;mut </span>TaskState,
+        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+    ) -&gt; Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;RawVc&gt;&gt; + Send&gt;&gt; {
+        <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.ty {
+            TaskType::Root(bound_fn) =&gt; bound_fn(),
+            TaskType::Once(mutex) =&gt; mutex.lock().take().expect(<span class="string">&quot;Task can only be executed once&quot;</span>),
+            TaskType::Persistent(ty) =&gt; <span class="kw">match </span><span class="kw-2">&amp;**</span>ty {
+                PersistentTaskType::Native(native_fn, inputs) =&gt; {
+                    <span class="kw">if let </span>PrepareTaskType::Native(bound_fn) = <span class="kw-2">&amp;</span>state.prepared_type {
+                        bound_fn()
+                    } <span class="kw">else </span>{
+                        <span class="kw">let </span>bound_fn = registry::get_function(<span class="kw-2">*</span>native_fn).bind(inputs);
+                        <span class="kw">let </span>future = bound_fn();
+                        state.prepared_type = PrepareTaskType::Native(bound_fn);
+                        future
+                    }
+                }
+                PersistentTaskType::ResolveNative(<span class="kw-2">ref </span>native_fn, inputs) =&gt; {
+                    <span class="kw">let </span>native_fn = <span class="kw-2">*</span>native_fn;
+                    <span class="kw">let </span>inputs = inputs.clone();
+                    <span class="kw">let </span>turbo_tasks = turbo_tasks.pin();
+                    Box::pin(PersistentTaskType::run_resolve_native(
+                        native_fn,
+                        inputs,
+                        turbo_tasks,
+                    ))
+                }
+                PersistentTaskType::ResolveTrait(trait_type, name, inputs) =&gt; {
+                    <span class="kw">let </span>trait_type = <span class="kw-2">*</span>trait_type;
+                    <span class="kw">let </span>name = name.clone();
+                    <span class="kw">let </span>inputs = inputs.clone();
+                    <span class="kw">let </span>turbo_tasks = turbo_tasks.pin();
+                    Box::pin(PersistentTaskType::run_resolve_trait(
+                        trait_type,
+                        name,
+                        inputs,
+                        turbo_tasks,
+                    ))
+                }
+            },
+        }
+    }
+
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>execution_result(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         result: <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;RawVc&gt;, <span class="prelude-ty">Option</span>&lt;Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;&gt;&gt;,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">match </span>state.state_type {
-            InProgress =&gt; <span class="kw">match </span>result {
+            InProgress { .. } =&gt; <span class="kw">match </span>result {
                 <span class="prelude-val">Ok</span>(<span class="prelude-val">Ok</span>(result)) =&gt; state.output.link(result, turbo_tasks),
                 <span class="prelude-val">Ok</span>(<span class="prelude-val">Err</span>(err)) =&gt; state.output.error(err, turbo_tasks),
                 <span class="prelude-val">Err</span>(message) =&gt; state.output.panic(message, turbo_tasks),
             },
-            InProgressDirty =&gt; {
+            InProgressDirty { .. } =&gt; {
                 <span class="comment">// We don&#39;t want to assign the output cell here
                 // as we want to avoid unnecessary updates
                 // TODO maybe this should be controlled by a heuristic
             </span>}
-            Dirty | Scheduled | Done =&gt; {
+            Dirty { .. } | Scheduled { .. } | Done { .. } =&gt; {
                 <span class="macro">panic!</span>(
-                    <span class="string">&quot;Task execution completed in unexpected state {:?}&quot;</span>,
-                    state.state_type
+                    <span class="string">&quot;Task execution completed in unexpected state {}&quot;</span>,
+                    Task::state_string(<span class="kw-2">&amp;</span>state)
                 )
             }
         };
@@ -2154,55 +2508,56 @@
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>execution_completed(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         duration: Duration,
+        instant: Instant,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) -&gt; bool {
-        DEPENDENCIES_TO_TRACK.with(|deps| {
-            <span class="kw">let </span><span class="kw-2">mut </span>execution_data = <span class="self">self</span>.execution_data.lock();
-            execution_data.dependencies = deps.take();
-        });
         <span class="kw">let </span><span class="kw-2">mut </span>schedule_task = <span class="bool-val">false</span>;
-        <span class="kw">let </span><span class="kw-2">mut </span>clear_dependencies = <span class="bool-val">false</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>dependencies = DEPENDENCIES_TO_TRACK.with(|deps| deps.take());
         {
-            <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-            state.total_duration += duration;
-            state.last_duration = duration;
+            <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
+
+            state
+                .stats
+                .register_execution(duration, turbo_tasks.program_duration_until(instant));
             <span class="kw">match </span>state.state_type {
-                InProgress =&gt; {
-                    state.state_type = Done;
+                InProgress { <span class="kw-2">ref mut </span>event } =&gt; {
+                    <span class="kw">let </span>event = event.take();
+                    <span class="kw">let </span><span class="kw-2">mut </span>dependencies = take(<span class="kw-2">&amp;mut </span>dependencies);
+                    <span class="comment">// This will stay here for longer, so make sure to not consume too much memory
+                    </span>dependencies.shrink_to_fit();
+                    <span class="kw">for </span>cells <span class="kw">in </span>state.cells.values_mut() {
+                        cells.shrink_to_fit();
+                    }
+                    state.cells.shrink_to_fit();
+                    state.state_type = Done { dependencies };
                     <span class="kw">for </span>scope <span class="kw">in </span>state.scopes.iter() {
                         backend.with_scope(scope, |scope| {
                             scope.decrement_unfinished_tasks(backend);
                         })
                     }
-                    state.event.notify(usize::MAX);
+                    event.notify(usize::MAX);
                 }
-                InProgressDirty =&gt; {
-                    clear_dependencies = <span class="bool-val">true</span>;
-                    <span class="kw">let </span><span class="kw-2">mut </span>active = <span class="bool-val">false</span>;
-                    <span class="kw">for </span>scope <span class="kw">in </span>state.scopes.iter() {
-                        <span class="kw">if </span>backend.with_scope(scope, |scope| scope.state.lock().is_active()) {
-                            active = <span class="bool-val">true</span>;
-                            <span class="kw">break</span>;
-                        }
-                    }
+                InProgressDirty { <span class="kw-2">ref mut </span>event } =&gt; {
+                    <span class="kw">let </span>event = event.take();
+                    <span class="kw">let </span>active = <span class="self">self</span>.scopes_dirty_or_active(<span class="bool-val">false</span>, <span class="kw-2">&amp;</span>state.scopes, backend);
                     <span class="kw">if </span>active {
-                        state.state_type = Scheduled;
+                        state.state_type = Scheduled { event };
                         schedule_task = <span class="bool-val">true</span>;
                     } <span class="kw">else </span>{
-                        state.state_type = Dirty;
+                        state.state_type = Dirty { event };
                     }
                 }
-                Dirty | Scheduled | Done =&gt; {
+                Dirty { .. } | Scheduled { .. } | Done { .. } =&gt; {
                     <span class="macro">panic!</span>(
-                        <span class="string">&quot;Task execution completed in unexpected state {:?}&quot;</span>,
-                        state.state_type
+                        <span class="string">&quot;Task execution completed in unexpected state {}&quot;</span>,
+                        Task::state_string(<span class="kw-2">&amp;</span>state)
                     )
                 }
             };
         }
-        <span class="kw">if </span>clear_dependencies {
-            <span class="self">self</span>.clear_dependencies(backend)
+        <span class="kw">if </span>!dependencies.is_empty() {
+            <span class="self">self</span>.clear_dependencies(dependencies, backend);
         }
 
         <span class="kw">if let </span>TaskType::Once(<span class="kw">_</span>) = <span class="self">self</span>.ty {
@@ -2212,52 +2567,125 @@
         schedule_task
     }
 
+    <span class="doccomment">/// When any scope is active it returns true. When no scope is active it
+    /// returns false and adds the tasks to all scopes as dirty task.
+    /// When `increment_unfinished` is true it will also increment the
+    /// unfinished tasks for all scopes, independent of activeness.
+    </span><span class="kw">fn </span>scopes_dirty_or_active(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        increment_unfinished: bool,
+        scopes: <span class="kw-2">&amp;</span>TaskScopes,
+        backend: <span class="kw-2">&amp;</span>MemoryBackend,
+    ) -&gt; bool {
+        <span class="kw">if </span>increment_unfinished {
+            <span class="comment">// We need to walk all scopes at least once to increment unfinished tasks.
+            // While doing that we check if any scope is active.
+            </span><span class="kw">let </span><span class="kw-2">mut </span>active = <span class="bool-val">false</span>;
+            <span class="kw">for </span>scope <span class="kw">in </span>scopes.iter() {
+                backend.with_scope(scope, |scope| {
+                    scope.increment_unfinished_tasks(backend);
+                    active = active || scope.state.lock().is_active();
+                })
+            }
+            <span class="kw">if </span>active {
+                <span class="kw">return </span><span class="bool-val">true</span>;
+            }
+        } <span class="kw">else </span>{
+            <span class="comment">// Without the need to increment unfinished for all scopes we can exit early
+            </span><span class="kw">if </span>scopes
+                .iter()
+                .any(|scope| backend.with_scope(scope, |scope| scope.state.lock().is_active()))
+            {
+                <span class="kw">return </span><span class="bool-val">true</span>;
+            }
+        }
+        <span class="kw">for </span>(i, scope) <span class="kw">in </span>scopes.iter().enumerate() {
+            <span class="kw">let </span>any_scope_was_active = backend.with_scope(scope, |scope| {
+                <span class="kw">let </span><span class="kw-2">mut </span>state = scope.state.lock();
+                <span class="kw">let </span>is_active = state.is_active();
+                <span class="kw">if </span>!is_active {
+                    state.add_dirty_task(<span class="self">self</span>.id);
+                }
+                is_active
+            });
+            <span class="kw">if </span>any_scope_was_active {
+                <span class="comment">// A scope is active, revert dirty task changes and return true
+                </span><span class="kw">for </span>scope <span class="kw">in </span>scopes.iter().take(i + <span class="number">1</span>) {
+                    backend.with_scope(scope, |scope| {
+                        <span class="kw">let </span><span class="kw-2">mut </span>state = scope.state.lock();
+                        state.remove_dirty_task(<span class="self">self</span>.id);
+                    })
+                }
+                <span class="kw">return </span><span class="bool-val">true</span>;
+            }
+        }
+        <span class="comment">// No scope is active. Task has been added as dirty task to all scopes
+        </span><span class="kw">return </span><span class="bool-val">false</span>;
+    }
+
     <span class="kw">fn </span>make_dirty(<span class="kw-2">&amp;</span><span class="self">self</span>, backend: <span class="kw-2">&amp;</span>MemoryBackend, turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi) {
         <span class="kw">if let </span>TaskType::Once(<span class="kw">_</span>) = <span class="self">self</span>.ty {
             <span class="comment">// once task won&#39;t become dirty
             </span><span class="kw">return</span>;
         }
-        <span class="self">self</span>.clear_dependencies(backend);
 
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        <span class="kw">match </span>state.state_type {
-            Dirty | Scheduled | InProgressDirty =&gt; {
-                <span class="comment">// already dirty
-            </span>}
-            Done =&gt; {
-                <span class="comment">// add to dirty lists and potentially schedule
-                </span><span class="kw">let </span><span class="kw-2">mut </span>active = <span class="bool-val">false</span>;
-                <span class="kw">for </span>scope <span class="kw">in </span>state.scopes.iter() {
-                    backend.with_scope(scope, |scope| {
-                        scope.increment_unfinished_tasks(backend);
-                        <span class="macro">log_scope_update!</span>(<span class="string">&quot;add unfinished task: {} -&gt; {}&quot;</span>, <span class="kw-2">*</span>scope.id, <span class="kw-2">*</span><span class="self">self</span>.id);
-                        <span class="kw">let </span><span class="kw-2">mut </span>scope = scope.state.lock();
-                        <span class="kw">if </span>scope.is_active() {
-                            active = <span class="bool-val">true</span>;
-                        } <span class="kw">else </span>{
-                            scope.add_dirty_task(<span class="self">self</span>.id);
-                        }
-                    });
+        <span class="kw">if let </span>TaskMetaStateWriteGuard::Full(<span class="kw-2">mut </span>state) = <span class="self">self</span>.state_mut() {
+            <span class="kw">let </span>id = <span class="self">self</span>.id;
+            <span class="kw">let </span><span class="kw-2">mut </span>clear_dependencies = AutoSet::new();
+
+            <span class="kw">match </span>state.state_type {
+                Dirty { .. } | Scheduled { .. } | InProgressDirty { .. } =&gt; {
+                    <span class="comment">// already dirty
+                    </span>drop(state);
                 }
-                <span class="kw">if </span>active {
-                    state.state_type = Scheduled;
-                    drop(state);
-                    turbo_tasks.schedule(<span class="self">self</span>.id);
-                } <span class="kw">else </span>{
-                    state.state_type = Dirty;
+                Done {
+                    <span class="kw-2">ref mut </span>dependencies,
+                } =&gt; {
+                    clear_dependencies = take(dependencies);
+                    <span class="comment">// add to dirty lists and potentially schedule
+                    </span><span class="kw">let </span>active = <span class="self">self</span>.scopes_dirty_or_active(<span class="bool-val">true</span>, <span class="kw-2">&amp;</span>state.scopes, backend);
+                    <span class="kw">if </span>active {
+                        state.state_type = Scheduled {
+                            event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+                        };
+                        drop(state);
+                        turbo_tasks.schedule(<span class="self">self</span>.id);
+                    } <span class="kw">else </span>{
+                        state.state_type = Dirty {
+                            event: Event::new(<span class="kw">move </span>|| <span class="macro">format!</span>(<span class="string">&quot;TaskState({id})::event&quot;</span>)),
+                        };
+                        drop(state);
+                    }
+                }
+                InProgress { <span class="kw-2">ref mut </span>event } =&gt; {
+                    state.state_type = InProgressDirty {
+                        event: event.take(),
+                    };
                     drop(state);
                 }
             }
-            InProgress =&gt; {
-                state.state_type = InProgressDirty;
+
+            <span class="kw">if </span>!clear_dependencies.is_empty() {
+                <span class="self">self</span>.clear_dependencies(clear_dependencies, backend);
             }
         }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>schedule_when_dirty(<span class="kw-2">&amp;</span><span class="self">self</span>, turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        <span class="kw">if </span>state.state_type == TaskStateType::Dirty {
-            state.state_type = Scheduled;
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>schedule_when_dirty_from_scope(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        backend: <span class="kw-2">&amp;</span>MemoryBackend,
+        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+    ) {
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
+        <span class="kw">if let </span>TaskStateType::Dirty { <span class="kw-2">ref mut </span>event } = state.state_type {
+            state.state_type = Scheduled {
+                event: event.take(),
+            };
+            <span class="kw">for </span>scope <span class="kw">in </span>state.scopes.iter() {
+                backend.with_scope(scope, |scope| {
+                    scope.state.lock().remove_dirty_task(<span class="self">self</span>.id);
+                })
+            }
             drop(state);
             turbo_tasks.schedule(<span class="self">self</span>.id);
         }
@@ -2272,10 +2700,12 @@
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
         queue: <span class="kw-2">&amp;mut </span>VecDeque&lt;(TaskId, usize)&gt;,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">let </span>TaskState {
-            scopes, children, ..
-        } = <span class="kw-2">&amp;mut *</span>state;
+            <span class="kw-2">ref mut </span>scopes,
+            <span class="kw-2">ref </span>children,
+            ..
+        } = <span class="kw-2">*</span>state;
         <span class="kw">match </span><span class="kw-2">*</span>scopes {
             TaskScopes::Root(root) =&gt; {
                 <span class="kw">if </span>root == id {
@@ -2317,7 +2747,7 @@
                         <span class="kw-2">*</span>optimization_counter += children.len() &gt;&gt; depth;
                         <span class="kw">if </span><span class="kw-2">*</span>optimization_counter &gt;= <span class="number">0x10000 </span>{
                             list.remove(id);
-                            <span class="self">self</span>.make_root_scoped_internal(state, backend, turbo_tasks);
+                            drop(<span class="self">self</span>.make_root_scoped_internal(state, backend, turbo_tasks));
                             <span class="kw">return </span><span class="self">self</span>.add_to_scope_internal_shallow(
                                 id,
                                 is_optimization_scope,
@@ -2330,6 +2760,9 @@
                     }
                 }
 
+                <span class="kw">if </span>queue.capacity() == <span class="number">0 </span>{
+                    queue.reserve(max(children.len(), SPLIT_OFF_QUEUE_AT * <span class="number">2</span>));
+                }
                 queue.extend(children.iter().copied().map(|child| (child, depth + <span class="number">1</span>)));
 
                 <span class="comment">// add to dirty list of the scope (potentially schedule)
@@ -2351,7 +2784,8 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::new();
+        <span class="comment">// VecDeque::new() would allocate with 7 items capacity. We don&#39;t want that.
+        </span><span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::with_capacity(<span class="number">0</span>);
         <span class="self">self</span>.add_to_scope_internal_shallow(
             id,
             is_optimization_scope,
@@ -2366,7 +2800,7 @@
 
     <span class="kw">fn </span>add_self_to_new_scope(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        state: <span class="kw-2">&amp;mut </span>RwLockWriteGuard&lt;TaskState&gt;,
+        state: <span class="kw-2">&amp;mut </span>FullTaskWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt;,
         id: TaskScopeId,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
@@ -2374,13 +2808,15 @@
         <span class="kw">let </span><span class="kw-2">mut </span>schedule_self = <span class="bool-val">false</span>;
         backend.with_scope(id, |scope| {
             scope.increment_tasks();
-            <span class="kw">if </span>!<span class="macro">matches!</span>(state.state_type, TaskStateType::Done) {
+            <span class="kw">if </span>!<span class="macro">matches!</span>(state.state_type, TaskStateType::Done { .. }) {
                 scope.increment_unfinished_tasks(backend);
                 <span class="macro">log_scope_update!</span>(<span class="string">&quot;add unfinished task (added): {} -&gt; {}&quot;</span>, <span class="kw-2">*</span>scope.id, <span class="kw-2">*</span><span class="self">self</span>.id);
-                <span class="kw">if </span>state.state_type == TaskStateType::Dirty {
+                <span class="kw">if let </span>TaskStateType::Dirty { <span class="kw-2">ref mut </span>event } = state.state_type {
                     <span class="kw">let </span><span class="kw-2">mut </span>scope = scope.state.lock();
                     <span class="kw">if </span>scope.is_active() {
-                        state.state_type = Scheduled;
+                        state.state_type = Scheduled {
+                            event: event.take(),
+                        };
                         schedule_self = <span class="bool-val">true</span>;
                     } <span class="kw">else </span>{
                         scope.add_dirty_task(<span class="self">self</span>.id);
@@ -2389,7 +2825,7 @@
             }
 
             <span class="kw">if let </span><span class="prelude-val">Some</span>(collectibles) = state.collectibles.as_ref() {
-                <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
+                <span class="kw">let </span><span class="kw-2">mut </span>tasks = AutoSet::new();
                 {
                     <span class="kw">let </span><span class="kw-2">mut </span>scope_state = scope.state.lock();
                     collectibles
@@ -2415,23 +2851,50 @@
 
     <span class="kw">fn </span>remove_self_from_scope(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        state: <span class="kw-2">&amp;mut </span>RwLockWriteGuard&lt;TaskState&gt;,
+        state: <span class="kw-2">&amp;mut </span>TaskMetaStateWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt;,
+        id: TaskScopeId,
+        backend: <span class="kw-2">&amp;</span>MemoryBackend,
+        turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+    ) {
+        <span class="kw">match </span>state {
+            TaskMetaStateWriteGuard::Full(state) =&gt; {
+                <span class="self">self</span>.remove_self_from_scope_full(state, id, backend, turbo_tasks);
+            }
+            TaskMetaStateWriteGuard::Partial(<span class="kw">_</span>) =&gt; backend.with_scope(id, |scope| {
+                scope.decrement_tasks();
+                scope.decrement_unfinished_tasks(backend);
+                <span class="kw">let </span><span class="kw-2">mut </span>scope = scope.state.lock();
+                scope.remove_dirty_task(<span class="self">self</span>.id);
+            }),
+            TaskMetaStateWriteGuard::Unloaded(<span class="kw">_</span>) =&gt; {
+                <span class="macro">unreachable!</span>(<span class="string">&quot;remove_self_from_scope must be called with at least a partial state&quot;</span>);
+            }
+        }
+    }
+
+    <span class="kw">fn </span>remove_self_from_scope_full(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        state: <span class="kw-2">&amp;mut </span>FullTaskWriteGuard&lt;<span class="lifetime">&#39;_</span>&gt;,
         id: TaskScopeId,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
         backend.with_scope(id, |scope| {
-            <span class="kw">if </span>!<span class="macro">matches!</span>(state.state_type, Done) {
-                scope.decrement_unfinished_tasks(backend);
-                <span class="kw">if </span>state.state_type == TaskStateType::Dirty {
+            <span class="kw">match </span>state.state_type {
+                Done { .. } =&gt; {}
+                Dirty { .. } =&gt; {
+                    scope.decrement_unfinished_tasks(backend);
                     <span class="kw">let </span><span class="kw-2">mut </span>scope = scope.state.lock();
                     scope.remove_dirty_task(<span class="self">self</span>.id);
+                }
+                <span class="kw">_ </span>=&gt; {
+                    scope.decrement_unfinished_tasks(backend);
                 }
             }
             scope.decrement_tasks();
 
             <span class="kw">if let </span><span class="prelude-val">Some</span>(collectibles) = state.collectibles.as_ref() {
-                <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
+                <span class="kw">let </span><span class="kw-2">mut </span>tasks = AutoSet::new();
                 {
                     <span class="kw">let </span><span class="kw-2">mut </span>scope_state = scope.state.lock();
                     collectibles
@@ -2461,9 +2924,10 @@
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
         queue: <span class="kw-2">&amp;mut </span>VecDeque&lt;TaskId&gt;,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        <span class="kw">match </span>state.scopes {
-            TaskScopes::Root(root) =&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.partial_state_mut();
+        <span class="kw">let </span>(scopes, children) = state.scopes_and_children();
+        <span class="kw">match </span>scopes {
+            <span class="kw-2">&amp;mut </span>TaskScopes::Root(root) =&gt; {
                 <span class="kw">if </span>root != id {
                     <span class="kw">if let </span><span class="prelude-val">Some</span>(ScopeChildChangeEffect {
                         notify,
@@ -2481,16 +2945,18 @@
                         <span class="kw">if </span>parent {
                             backend.with_scope(root, |child| {
                                 child.remove_parent(id, backend);
-                            })
+                            });
                         }
                     }
                 }
             }
-            TaskScopes::Inner(<span class="kw-2">ref mut </span>set, <span class="kw">_</span>) =&gt; {
+            TaskScopes::Inner(set, <span class="kw">_</span>) =&gt; {
                 <span class="kw">if </span>set.remove(id) {
+                    <span class="kw">if </span>queue.capacity() == <span class="number">0 </span>{
+                        queue.reserve(max(children.len(), SPLIT_OFF_QUEUE_AT * <span class="number">2</span>));
+                    }
+                    queue.extend(children.iter().copied());
                     <span class="self">self</span>.remove_self_from_scope(<span class="kw-2">&amp;mut </span>state, id, backend, turbo_tasks);
-                    queue.extend(state.children.iter().copied());
-                    drop(state);
                 }
             }
         }
@@ -2502,7 +2968,8 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::new();
+        <span class="comment">// VecDeque::new() would allocate with 7 items capacity. We don&#39;t want that.
+        </span><span class="kw">let </span><span class="kw-2">mut </span>queue = VecDeque::with_capacity(<span class="number">0</span>);
         <span class="self">self</span>.remove_from_scope_internal_shallow(id, backend, turbo_tasks, <span class="kw-2">&amp;mut </span>queue);
         run_remove_from_scope_queue(queue, id, backend, turbo_tasks);
     }
@@ -2532,7 +2999,7 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">match </span>state.scopes {
             TaskScopes::Root(root) =&gt; {
                 <span class="macro">log_scope_update!</span>(<span class="string">&quot;removing root scope {root}&quot;</span>);
@@ -2546,11 +3013,16 @@
                 <span class="macro">log_scope_update!</span>(<span class="string">&quot;removing initial scope&quot;</span>);
                 <span class="kw">let </span>initial = backend.initial_scope;
                 <span class="kw">if </span>set.remove(initial) {
-                    <span class="self">self</span>.remove_self_from_scope(<span class="kw-2">&amp;mut </span>state, initial, backend, turbo_tasks);
                     <span class="kw">let </span>children = state.children.iter().copied().collect::&lt;VecDeque&lt;<span class="kw">_</span>&gt;&gt;();
-                    drop(state);
+                    <span class="self">self</span>.remove_self_from_scope(
+                        <span class="kw-2">&amp;mut </span>TaskMetaStateWriteGuard::Full(state),
+                        initial,
+                        backend,
+                        turbo_tasks,
+                    );
+                    <span class="comment">// state ends here, as it was passed into `remove_self_from_scope`
 
-                    <span class="kw">if </span>!children.is_empty() {
+                    </span><span class="kw">if </span>!children.is_empty() {
                         run_remove_from_scope_queue(children, initial, backend, turbo_tasks);
                     }
                 }
@@ -2560,10 +3032,10 @@
 
     <span class="kw">fn </span>make_root_scoped_internal&lt;<span class="lifetime">&#39;a</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="kw-2">mut </span>state: RwLockWriteGuard&lt;<span class="lifetime">&#39;a</span>, TaskState&gt;,
+        <span class="kw-2">mut </span>state: FullTaskWriteGuard&lt;<span class="lifetime">&#39;a</span>&gt;,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;RwLockWriteGuard&lt;<span class="lifetime">&#39;a</span>, TaskState&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;FullTaskWriteGuard&lt;<span class="lifetime">&#39;a</span>&gt;&gt; {
         <span class="kw">if </span><span class="macro">matches!</span>(state.scopes, TaskScopes::Root(<span class="kw">_</span>)) {
             <span class="kw">return </span><span class="prelude-val">Some</span>(state);
         }
@@ -2577,7 +3049,7 @@
                 <span class="self">self</span>.ty
             );
             <span class="kw">let </span><span class="kw-2">mut </span>active_counter = <span class="number">0isize</span>;
-            <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
+            <span class="kw">let </span><span class="kw-2">mut </span>tasks = AutoSet::new();
             <span class="kw">let </span><span class="kw-2">mut </span>scopes_to_add_as_parent = Vec::new();
             <span class="kw">let </span><span class="kw-2">mut </span>scopes_to_remove_as_parent = Vec::new();
             <span class="kw">for </span>(scope_id, count) <span class="kw">in </span>scopes.iter() {
@@ -2660,7 +3132,7 @@
             <span class="comment">// remove self from old scopes
             </span><span class="kw">for </span>(scope, count) <span class="kw">in </span>scopes.iter() {
                 <span class="kw">if </span><span class="kw-2">*</span>count &gt; <span class="number">0 </span>{
-                    <span class="self">self</span>.remove_self_from_scope(<span class="kw-2">&amp;mut </span>state, <span class="kw-2">*</span>scope, backend, turbo_tasks);
+                    <span class="self">self</span>.remove_self_from_scope_full(<span class="kw-2">&amp;mut </span>state, <span class="kw-2">*</span>scope, backend, turbo_tasks);
                 }
             }
 
@@ -2703,35 +3175,6 @@
         })
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>execute(<span class="kw-2">&amp;</span><span class="self">self</span>, tt: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi) -&gt; NativeTaskFuture {
-        <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.ty {
-            TaskType::Root(bound_fn) =&gt; bound_fn(),
-            TaskType::Once(mutex) =&gt; {
-                <span class="kw">let </span>future = mutex.lock().take().expect(<span class="string">&quot;Task can only be executed once&quot;</span>);
-                <span class="comment">// let task = self.clone();
-                </span>Box::pin(future)
-            }
-            TaskType::Native(<span class="kw">_</span>, bound_fn) =&gt; bound_fn(),
-            TaskType::ResolveNative(<span class="kw-2">ref </span>native_fn) =&gt; {
-                <span class="kw">let </span>native_fn = <span class="kw-2">*</span>native_fn;
-                <span class="kw">let </span>inputs = <span class="self">self</span>.inputs.clone();
-                <span class="kw">let </span>tt = tt.pin();
-                Box::pin(PersistentTaskType::run_resolve_native(
-                    native_fn, inputs, tt,
-                ))
-            }
-            TaskType::ResolveTrait(trait_type, name) =&gt; {
-                <span class="kw">let </span>trait_type = <span class="kw-2">*</span>trait_type;
-                <span class="kw">let </span>name = name.clone();
-                <span class="kw">let </span>inputs = <span class="self">self</span>.inputs.clone();
-                <span class="kw">let </span>tt = tt.pin();
-                Box::pin(PersistentTaskType::run_resolve_trait(
-                    trait_type, name, inputs, tt,
-                ))
-            }
-        }
-    }
-
     <span class="doccomment">/// Get an [Invalidator] that can be used to invalidate the current [Task]
     /// based on external events.
     </span><span class="kw">pub fn </span>get_invalidator() -&gt; Invalidator {
@@ -2749,14 +3192,20 @@
     }
 
     <span class="doccomment">/// Access to the output cell.
-    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_output_mut&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, func: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;mut </span>Output) -&gt; T) -&gt; T {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        func(<span class="kw-2">&amp;mut </span>state.output)
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_output_mut_if_available&lt;T&gt;(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        func: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;mut </span>Output) -&gt; T,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
+        <span class="kw">if let </span>TaskMetaStateWriteGuard::Full(<span class="kw-2">mut </span>state) = <span class="self">self</span>.state_mut() {
+            <span class="prelude-val">Some</span>(func(<span class="kw-2">&amp;mut </span>state.output))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
     <span class="doccomment">/// Access to a cell.
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_cell_mut&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, index: CellId, func: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;mut </span>Cell) -&gt; T) -&gt; T {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">let </span>list = state.cells.entry(index.type_id).or_default();
         <span class="kw">let </span>i = index.index <span class="kw">as </span>usize;
         <span class="kw">if </span>list.len() &lt;= i {
@@ -2766,91 +3215,146 @@
     }
 
     <span class="doccomment">/// Access to a cell.
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_cell_mut_if_available&lt;T&gt;(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        index: CellId,
+        func: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;mut </span>Cell) -&gt; T,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
+        <span class="self">self</span>.state_mut()
+            .as_full_mut()
+            .and_then(|state| state.cells.get_mut(<span class="kw-2">&amp;</span>index.type_id))
+            .and_then(|list| list.get_mut(index.index <span class="kw">as </span>usize).map(|cell| func(cell)))
+    }
+
+    <span class="doccomment">/// Access to a cell.
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_cell&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, index: CellId, func: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;</span>Cell) -&gt; T) -&gt; T {
-        <span class="kw">let </span>state = <span class="self">self</span>.state.read();
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(list) = state.cells.get(<span class="kw-2">&amp;</span>index.type_id) {
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(cell) = list.get(index.index <span class="kw">as </span>usize) {
-                <span class="kw">return </span>func(cell);
-            }
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(cell) = <span class="self">self
+            </span>.state()
+            .as_full()
+            .and_then(|state| state.cells.get(<span class="kw-2">&amp;</span>index.type_id))
+            .and_then(|list| list.get(index.index <span class="kw">as </span>usize))
+        {
+            func(cell)
+        } <span class="kw">else </span>{
+            func(<span class="kw-2">&amp;</span>Default::default())
         }
-        func(<span class="kw-2">&amp;</span>Default::default())
     }
 
     <span class="doccomment">/// For testing purposes
     </span><span class="kw">pub fn </span>reset_executions(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        <span class="kw">if </span>state.executions &gt; <span class="number">1 </span>{
-            state.executions = <span class="number">1</span>;
+        <span class="kw">if let </span>TaskMetaStateWriteGuard::Full(<span class="kw-2">mut </span>state) = <span class="self">self</span>.state_mut() {
+            state.stats.reset_executions()
         }
     }
 
     <span class="kw">pub fn </span>is_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">let </span>state = <span class="self">self</span>.state.read();
-        state.state_type != TaskStateType::Done
+        <span class="kw">if let </span>TaskMetaStateReadGuard::Full(state) = <span class="self">self</span>.state() {
+            !<span class="macro">matches!</span>(state.state_type, TaskStateType::Done { .. })
+        } <span class="kw">else </span>{
+            <span class="bool-val">true
+        </span>}
     }
 
     <span class="kw">pub fn </span>reset_stats(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
-        state.executions = <span class="number">0</span>;
-        state.total_duration = Duration::ZERO;
-        state.last_duration = Duration::ZERO;
-    }
-
-    <span class="kw">pub fn </span>get_stats_info(<span class="kw-2">&amp;</span><span class="self">self</span>, backend: <span class="kw-2">&amp;</span>MemoryBackend) -&gt; TaskStatsInfo {
-        <span class="kw">let </span>state = <span class="self">self</span>.state.read();
-        TaskStatsInfo {
-            total_duration: state.total_duration,
-            last_duration: state.last_duration,
-            executions: state.executions,
-            root_scoped: <span class="macro">matches!</span>(state.scopes, TaskScopes::Root(<span class="kw">_</span>)),
-            child_scopes: <span class="kw">match </span>state.scopes {
-                TaskScopes::Root(<span class="kw">_</span>) =&gt; <span class="number">1</span>,
-                TaskScopes::Inner(<span class="kw-2">ref </span>list, <span class="kw">_</span>) =&gt; list.len(),
-            },
-            active: state
-                .scopes
-                .iter()
-                .any(|scope| backend.with_scope(scope, |scope| scope.state.lock().is_active())),
+        <span class="kw">if let </span>TaskMetaStateWriteGuard::Full(<span class="kw-2">mut </span>state) = <span class="self">self</span>.state_mut() {
+            state.stats.reset();
         }
     }
 
-    <span class="kw">pub fn </span>get_stats_type(<span class="self">self</span>: <span class="kw-2">&amp;</span>Task) -&gt; stats::TaskType {
+    <span class="kw">pub fn </span>get_stats_info(<span class="kw-2">&amp;</span><span class="self">self</span>, backend: <span class="kw-2">&amp;</span>MemoryBackend) -&gt; TaskStatsInfo {
+        <span class="kw">match </span><span class="self">self</span>.state() {
+            TaskMetaStateReadGuard::Full(state) =&gt; {
+                <span class="kw">let </span>(total_duration, last_duration, executions) = <span class="kw">match </span><span class="kw-2">&amp;</span>state.stats {
+                    TaskStats::Essential(stats) =&gt; (<span class="prelude-val">None</span>, stats.last_duration(), <span class="prelude-val">None</span>),
+                    TaskStats::Full(stats) =&gt; (
+                        <span class="prelude-val">Some</span>(stats.total_duration()),
+                        stats.last_duration(),
+                        <span class="prelude-val">Some</span>(stats.executions()),
+                    ),
+                };
+
+                TaskStatsInfo {
+                    total_duration,
+                    last_duration,
+                    executions,
+                    root_scoped: <span class="macro">matches!</span>(state.scopes, TaskScopes::Root(<span class="kw">_</span>)),
+                    child_scopes: <span class="kw">match </span>state.scopes {
+                        TaskScopes::Root(<span class="kw">_</span>) =&gt; <span class="number">1</span>,
+                        TaskScopes::Inner(<span class="kw-2">ref </span>list, <span class="kw">_</span>) =&gt; list.len(),
+                    },
+                    active: state.scopes.iter().any(|scope| {
+                        backend.with_scope(scope, |scope| scope.state.lock().is_active())
+                    }),
+                }
+            }
+            TaskMetaStateReadGuard::Partial(state) =&gt; TaskStatsInfo {
+                total_duration: <span class="prelude-val">None</span>,
+                last_duration: Duration::ZERO,
+                executions: <span class="prelude-val">None</span>,
+                root_scoped: <span class="bool-val">false</span>,
+                child_scopes: <span class="kw">if let </span>TaskScopes::Inner(<span class="kw-2">ref </span>set, <span class="kw">_</span>) = state.scopes {
+                    set.len()
+                } <span class="kw">else </span>{
+                    <span class="number">0
+                </span>},
+                active: <span class="bool-val">false</span>,
+            },
+            TaskMetaStateReadGuard::Unloaded(<span class="kw">_</span>) =&gt; TaskStatsInfo {
+                total_duration: <span class="prelude-val">None</span>,
+                last_duration: Duration::ZERO,
+                executions: <span class="prelude-val">None</span>,
+                root_scoped: <span class="bool-val">false</span>,
+                child_scopes: <span class="number">0</span>,
+                active: <span class="bool-val">false</span>,
+            },
+        }
+    }
+
+    <span class="kw">pub fn </span>get_stats_type(<span class="self">self</span>: <span class="kw-2">&amp;</span>Task) -&gt; StatsTaskType {
         <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.ty {
-            TaskType::Root(<span class="kw">_</span>) =&gt; stats::TaskType::Root(<span class="self">self</span>.id),
-            TaskType::Once(<span class="kw">_</span>) =&gt; stats::TaskType::Once(<span class="self">self</span>.id),
-            TaskType::Native(f, <span class="kw">_</span>) =&gt; stats::TaskType::Native(<span class="kw-2">*</span>f),
-            TaskType::ResolveNative(f) =&gt; stats::TaskType::ResolveNative(<span class="kw-2">*</span>f),
-            TaskType::ResolveTrait(t, n) =&gt; stats::TaskType::ResolveTrait(<span class="kw-2">*</span>t, n.to_string()),
+            TaskType::Root(<span class="kw">_</span>) =&gt; StatsTaskType::Root(<span class="self">self</span>.id),
+            TaskType::Once(<span class="kw">_</span>) =&gt; StatsTaskType::Once(<span class="self">self</span>.id),
+            TaskType::Persistent(ty) =&gt; <span class="kw">match </span><span class="kw-2">&amp;**</span>ty {
+                PersistentTaskType::Native(f, <span class="kw">_</span>) =&gt; StatsTaskType::Native(<span class="kw-2">*</span>f),
+                PersistentTaskType::ResolveNative(f, <span class="kw">_</span>) =&gt; StatsTaskType::ResolveNative(<span class="kw-2">*</span>f),
+                PersistentTaskType::ResolveTrait(t, n, <span class="kw">_</span>) =&gt; {
+                    StatsTaskType::ResolveTrait(<span class="kw-2">*</span>t, n.to_string())
+                }
+            },
         }
     }
 
     <span class="kw">pub fn </span>get_stats_references(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; StatsReferences {
         <span class="kw">let </span><span class="kw-2">mut </span>refs = Vec::new();
         <span class="kw">let </span><span class="kw-2">mut </span>scope_refs = Vec::new();
-        {
-            <span class="kw">let </span>state = <span class="self">self</span>.state.read();
+        <span class="kw">if let </span>TaskMetaStateReadGuard::Full(state) = <span class="self">self</span>.state() {
             <span class="kw">for </span>child <span class="kw">in </span>state.children.iter() {
-                refs.push((stats::ReferenceType::Child, <span class="kw-2">*</span>child));
+                refs.push((ReferenceType::Child, <span class="kw-2">*</span>child));
             }
-        }
-        {
-            <span class="kw">let </span>execution_data = <span class="self">self</span>.execution_data.lock();
-            <span class="kw">for </span>dep <span class="kw">in </span>execution_data.dependencies.iter() {
-                <span class="kw">match </span>dep {
-                    TaskDependency::TaskOutput(task) | TaskDependency::TaskCell(task, <span class="kw">_</span>) =&gt; {
-                        refs.push((stats::ReferenceType::Dependency, <span class="kw-2">*</span>task))
-                    }
-                    TaskDependency::ScopeChildren(scope)
-                    | TaskDependency::ScopeCollectibles(scope, <span class="kw">_</span>) =&gt; {
-                        scope_refs.push((stats::ReferenceType::Dependency, <span class="kw-2">*</span>scope))
+            <span class="kw">if let </span>Done { <span class="kw-2">ref </span>dependencies } = state.state_type {
+                <span class="kw">for </span>dep <span class="kw">in </span>dependencies.iter() {
+                    <span class="kw">match </span>dep {
+                        TaskDependency::TaskOutput(task) | TaskDependency::TaskCell(task, <span class="kw">_</span>) =&gt; {
+                            refs.push((ReferenceType::Dependency, <span class="kw-2">*</span>task))
+                        }
+                        TaskDependency::ScopeChildren(scope)
+                        | TaskDependency::ScopeCollectibles(scope, <span class="kw">_</span>) =&gt; {
+                            scope_refs.push((ReferenceType::Dependency, <span class="kw-2">*</span>scope))
+                        }
                     }
                 }
             }
         }
-        {
-            <span class="kw">for </span>input <span class="kw">in </span><span class="self">self</span>.inputs.iter() {
-                <span class="kw">if let </span><span class="prelude-val">Some</span>(task) = input.get_task_id() {
-                    refs.push((stats::ReferenceType::Input, task));
+        <span class="kw">if let </span>TaskType::Persistent(ty) = <span class="kw-2">&amp;</span><span class="self">self</span>.ty {
+            <span class="kw">match </span><span class="kw-2">&amp;**</span>ty {
+                PersistentTaskType::Native(<span class="kw">_</span>, inputs)
+                | PersistentTaskType::ResolveNative(<span class="kw">_</span>, inputs)
+                | PersistentTaskType::ResolveTrait(<span class="kw">_</span>, <span class="kw">_</span>, inputs) =&gt; {
+                    <span class="kw">for </span>input <span class="kw">in </span>inputs.iter() {
+                        <span class="kw">if let </span><span class="prelude-val">Some</span>(task) = input.get_task_id() {
+                            refs.push((ReferenceType::Input, task));
+                        }
+                    }
                 }
             }
         }
@@ -2862,11 +3366,11 @@
 
     <span class="kw">fn </span>state_string(state: <span class="kw-2">&amp;</span>TaskState) -&gt; String {
         <span class="kw">let </span><span class="kw-2">mut </span>state_str = <span class="kw">match </span>state.state_type {
-            Scheduled =&gt; <span class="string">&quot;scheduled&quot;</span>.to_string(),
-            InProgress =&gt; <span class="string">&quot;in progress&quot;</span>.to_string(),
-            InProgressDirty =&gt; <span class="string">&quot;in progress (dirty)&quot;</span>.to_string(),
-            Done =&gt; <span class="string">&quot;done&quot;</span>.to_string(),
-            Dirty =&gt; <span class="string">&quot;dirty&quot;</span>.to_string(),
+            Scheduled { .. } =&gt; <span class="string">&quot;scheduled&quot;</span>.to_string(),
+            InProgress { .. } =&gt; <span class="string">&quot;in progress&quot;</span>.to_string(),
+            InProgressDirty { .. } =&gt; <span class="string">&quot;in progress (dirty)&quot;</span>.to_string(),
+            Done { .. } =&gt; <span class="string">&quot;done&quot;</span>.to_string(),
+            Dirty { .. } =&gt; <span class="string">&quot;dirty&quot;</span>.to_string(),
         };
         <span class="kw">match </span>state.scopes {
             TaskScopes::Root(root) =&gt; {
@@ -2894,7 +3398,7 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">if </span>state.children.insert(child_id) {
             <span class="kw">let </span>scopes = state.scopes.clone();
             drop(state);
@@ -2929,10 +3433,10 @@
 
     <span class="kw">fn </span>ensure_root_scoped&lt;<span class="lifetime">&#39;a</span>&gt;(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">self</span>,
-        <span class="kw-2">mut </span>state: RwLockWriteGuard&lt;<span class="lifetime">&#39;a</span>, TaskState&gt;,
+        <span class="kw-2">mut </span>state: FullTaskWriteGuard&lt;<span class="lifetime">&#39;a</span>&gt;,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    ) -&gt; RwLockWriteGuard&lt;<span class="lifetime">&#39;a</span>, TaskState&gt; {
+    ) -&gt; FullTaskWriteGuard&lt;<span class="lifetime">&#39;a</span>&gt; {
         <span class="kw">while </span>!state.scopes.is_root() {
             <span class="attr">#[cfg(not(feature = <span class="string">&quot;report_expensive&quot;</span>))]
             </span><span class="kw">let </span>result = <span class="self">self</span>.make_root_scoped_internal(state, backend, turbo_tasks);
@@ -2959,7 +3463,7 @@
                 <span class="kw">break</span>;
             } <span class="kw">else </span>{
                 <span class="comment">// We need to acquire a new lock and everything might have changed in between
-                </span>state = <span class="self">self</span>.state.write();
+                </span>state = <span class="self">self</span>.full_state_mut();
                 <span class="kw">continue</span>;
             }
         }
@@ -2970,10 +3474,11 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         strongly_consistent: bool,
         func: F,
+        note: <span class="kw">impl </span>Fn() -&gt; String + Sync + Send + <span class="lifetime">&#39;static</span>,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;T, EventListener&gt;&gt; {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">if </span>strongly_consistent {
             state = <span class="self">self</span>.ensure_root_scoped(state, backend, turbo_tasks);
             <span class="comment">// We need to wait for all foreground jobs to be finished as there could be
@@ -2996,14 +3501,27 @@
             }
         }
         <span class="kw">match </span>state.state_type {
-            Done =&gt; {
+            Done { .. } =&gt; {
                 <span class="kw">let </span>result = func(<span class="kw-2">&amp;mut </span>state.output)<span class="question-mark">?</span>;
                 drop(state);
 
                 <span class="prelude-val">Ok</span>(<span class="prelude-val">Ok</span>(result))
             }
-            Dirty | Scheduled | InProgress | InProgressDirty =&gt; {
-                <span class="kw">let </span>listener = state.event.listen();
+            Dirty { <span class="kw-2">ref mut </span>event } =&gt; {
+                turbo_tasks.schedule(<span class="self">self</span>.id);
+                <span class="kw">let </span>event = event.take();
+                <span class="kw">let </span>listener = event.listen_with_note(note);
+                state.state_type = Scheduled { event };
+                <span class="kw">for </span>scope <span class="kw">in </span>state.scopes.iter() {
+                    backend.with_scope(scope, |scope| {
+                        scope.state.lock().remove_dirty_task(<span class="self">self</span>.id);
+                    })
+                }
+                drop(state);
+                <span class="prelude-val">Ok</span>(<span class="prelude-val">Err</span>(listener))
+            }
+            Scheduled { <span class="kw-2">ref </span>event } | InProgress { <span class="kw-2">ref </span>event } | InProgressDirty { <span class="kw-2">ref </span>event } =&gt; {
+                <span class="kw">let </span>listener = event.listen_with_note(note);
                 drop(state);
                 <span class="prelude-val">Ok</span>(<span class="prelude-val">Err</span>(listener))
             }
@@ -3016,8 +3534,8 @@
         trait_id: TraitTypeId,
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;HashSet&lt;RawVc&gt;, EventListener&gt;&gt; {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Result</span>&lt;AutoSet&lt;RawVc&gt;, EventListener&gt;&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         state = <span class="self">self</span>.ensure_root_scoped(state, backend, turbo_tasks);
         <span class="comment">// We need to wait for all foreground jobs to be finished as there could be
         // ongoing add_to_scope jobs that need to be finished before reading
@@ -3045,10 +3563,9 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">if </span>state.collectibles.emit(trait_type, collectible) {
-            <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
-            state
+            <span class="kw">let </span>tasks = state
                 .scopes
                 .iter()
                 .flat_map(|id| {
@@ -3057,7 +3574,8 @@
                         state.add_collectible(trait_type, collectible)
                     })
                 })
-                .for_each(|e| tasks.extend(e.notify));
+                .flat_map(|e| e.notify)
+                .collect::&lt;AutoSet&lt;<span class="kw">_</span>&gt;&gt;();
             drop(state);
             turbo_tasks.schedule_notify_tasks_set(<span class="kw-2">&amp;</span>tasks);
         }
@@ -3070,9 +3588,9 @@
         backend: <span class="kw-2">&amp;</span>MemoryBackend,
         turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
     ) {
-        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.state.write();
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">self</span>.full_state_mut();
         <span class="kw">if </span>state.collectibles.unemit(trait_type, collectible) {
-            <span class="kw">let </span><span class="kw-2">mut </span>tasks = HashSet::new();
+            <span class="kw">let </span><span class="kw-2">mut </span>tasks = AutoSet::new();
             state
                 .scopes
                 .iter()
@@ -3085,6 +3603,57 @@
                 .for_each(|e| tasks.extend(e.notify));
             drop(state);
             turbo_tasks.schedule_notify_tasks_set(<span class="kw-2">&amp;</span>tasks);
+        }
+    }
+}
+
+<span class="kw">fn </span>remove_collectible_from_scopes(
+    emitted: AutoSet&lt;(TraitTypeId, RawVc)&gt;,
+    unemitted: AutoSet&lt;(TraitTypeId, RawVc)&gt;,
+    task_scopes: <span class="kw-2">&amp;</span>TaskScopes,
+    backend: <span class="kw-2">&amp;</span>MemoryBackend,
+    turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+) {
+    task_scopes.iter().for_each(|id| {
+        backend.with_scope(id, |scope| {
+            <span class="kw">let </span><span class="kw-2">mut </span>tasks = AutoSet::new();
+            {
+                <span class="kw">let </span><span class="kw-2">mut </span>state = scope.state.lock();
+                emitted
+                    .iter()
+                    .filter_map(|(trait_id, collectible)| {
+                        state.remove_collectible(<span class="kw-2">*</span>trait_id, <span class="kw-2">*</span>collectible)
+                    })
+                    .for_each(|e| tasks.extend(e.notify));
+
+                unemitted
+                    .iter()
+                    .filter_map(|(trait_id, collectible)| {
+                        state.add_collectible(<span class="kw-2">*</span>trait_id, <span class="kw-2">*</span>collectible)
+                    })
+                    .for_each(|e| tasks.extend(e.notify));
+            };
+            turbo_tasks.schedule_notify_tasks_set(<span class="kw-2">&amp;</span>tasks);
+        })
+    })
+}
+
+<span class="kw">fn </span>remove_from_scopes(
+    tasks: AutoSet&lt;TaskId&gt;,
+    task_scopes: <span class="kw-2">&amp;</span>TaskScopes,
+    backend: <span class="kw-2">&amp;</span>MemoryBackend,
+    turbo_tasks: <span class="kw-2">&amp;</span><span class="kw">dyn </span>TurboTasksBackendApi,
+) {
+    <span class="kw">match </span>task_scopes {
+        TaskScopes::Root(scope) =&gt; {
+            turbo_tasks.schedule_backend_foreground_job(
+                backend.create_backend_job(Job::RemoveFromScope(tasks, <span class="kw-2">*</span>scope)),
+            );
+        }
+        TaskScopes::Inner(<span class="kw-2">ref </span>scopes, <span class="kw">_</span>) =&gt; {
+            turbo_tasks.schedule_backend_foreground_job(backend.create_backend_job(
+                Job::RemoveFromScopes(tasks, scopes.iter().copied().collect()),
+            ));
         }
     }
 }
@@ -3112,8 +3681,8 @@
                 <span class="kw-2">&amp;mut </span>queue,
             );
         });
-        <span class="kw">if </span>queue.len() &gt; SPLIT_OFF_QUEUE_AT {
-            <span class="kw">let </span>split_off_queue = queue.split_off(SPLIT_OFF_QUEUE_AT);
+        <span class="kw">while </span>queue.len() &gt; SPLIT_OFF_QUEUE_AT {
+            <span class="kw">let </span>split_off_queue = queue.split_off(queue.len() - SPLIT_OFF_QUEUE_AT);
             turbo_tasks.schedule_backend_foreground_job(backend.create_backend_job(
                 Job::AddToScopeQueue(split_off_queue, id, is_optimization_scope),
             ));
@@ -3132,8 +3701,8 @@
         backend.with_task(child, |child| {
             child.remove_from_scope_internal_shallow(id, backend, turbo_tasks, <span class="kw-2">&amp;mut </span>queue);
         });
-        <span class="kw">if </span>queue.len() &gt; SPLIT_OFF_QUEUE_AT {
-            <span class="kw">let </span>split_off_queue = queue.split_off(SPLIT_OFF_QUEUE_AT);
+        <span class="kw">while </span>queue.len() &gt; SPLIT_OFF_QUEUE_AT {
+            <span class="kw">let </span>split_off_queue = queue.split_off(queue.len() - SPLIT_OFF_QUEUE_AT);
 
             turbo_tasks.schedule_backend_foreground_job(
                 backend.create_backend_job(Job::RemoveFromScopeQueue(split_off_queue, id)),
@@ -3144,13 +3713,16 @@
 
 <span class="kw">impl </span>Display <span class="kw">for </span>Task {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
-        <span class="kw">let </span>state = <span class="self">self</span>.state.read();
-        <span class="macro">write!</span>(
-            f,
-            <span class="string">&quot;Task({}, {})&quot;</span>,
-            <span class="self">self</span>.get_description(),
-            Task::state_string(<span class="kw-2">&amp;</span>state)
-        )
+        <span class="kw">if let </span>TaskMetaStateReadGuard::Full(state) = <span class="self">self</span>.state() {
+            <span class="macro">write!</span>(
+                f,
+                <span class="string">&quot;Task({}, {})&quot;</span>,
+                <span class="self">self</span>.get_description(),
+                Task::state_string(<span class="kw-2">&amp;</span>state)
+            )
+        } <span class="kw">else </span>{
+            <span class="macro">write!</span>(f, <span class="string">&quot;Task({}, unloaded)&quot;</span>, <span class="self">self</span>.get_description())
+        }
     }
 }
 
@@ -3169,9 +3741,9 @@
 <span class="kw">impl </span>Eq <span class="kw">for </span>Task {}
 
 <span class="kw">pub struct </span>TaskStatsInfo {
-    <span class="kw">pub </span>total_duration: Duration,
+    <span class="kw">pub </span>total_duration: <span class="prelude-ty">Option</span>&lt;Duration&gt;,
     <span class="kw">pub </span>last_duration: Duration,
-    <span class="kw">pub </span>executions: u32,
+    <span class="kw">pub </span>executions: <span class="prelude-ty">Option</span>&lt;u32&gt;,
     <span class="kw">pub </span>root_scoped: bool,
     <span class="kw">pub </span>child_scopes: usize,
     <span class="kw">pub </span>active: bool,
